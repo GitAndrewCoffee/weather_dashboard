@@ -22,18 +22,30 @@
 
     <div id="contentArea" class="contentArea row">   
 
-      <div id="sideBar" class="sideBar col-3">
+      <div id="sideBar" class="sideBar col-3 container-fluid">
 
-        <div id="searchBar" class="searchBar row">
+        <div id="searchBar" class="searchBar row m-2">
           
-          <h2>Search for a City:</h2>
-          <input id="seachCity">
-          <button id="startSearch">Search</button>
+          <div class="col-12">
+            
+            <h2 class="row">Search for a City:</h2>
+            
+            <input id="seachCity" class="row">
+            
+            <button id="startSearch" class="row">Search</button>
+
+          </div>
 
         </div>
 
-        <div id="historyList" class="historyList row">
-          historyList
+        <div id="historyList" class="historyList row m-2 border-top">
+
+          <div class="col-12">
+
+            <h2 class="row">historyList</h2>
+
+          </div>
+
         </div>
 
       </div>
@@ -41,11 +53,33 @@
       <div id="weatherContent" class="weatherContent col-9">
 
         <div id="currentWeather" class="currentWeather row">
-          currentWeather
+
+          <div class="col-12 container-fluid border">
+          
+            <h2 id="cityName" class="row"> City Name Here </h2>
+            
+            <div class="row">Temp:&nbsp <span id="tempLable">74</span></div>
+            
+            <div class="row">Wind:&nbsp <span id="windLable">74</span></div>
+            
+            <div class="row">Humidity:&nbsp <span id="humidityLable">74</span></div>
+            
+            <div class="row">UV Index:&nbsp <span id="uvLable">74</span></div>
+            
+          </div>
+
         </div>
 
-        <div id="fiveDay" class="fiveDay row">
-          fiveDay
+        <div class="row">
+          
+          <div class="col-12">
+
+            <h2 class="row">Five Day Forecast</h2>
+
+            <div id="fiveDay" class="fiveDay row"></div>            
+        
+          </div>
+
         </div>
 
       </div>
