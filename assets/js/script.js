@@ -8,6 +8,8 @@
     var currentCity = "";
     var currentLat = "";
     var currentLon = "";
+    var cityWeather = "";
+    var cityForecast = "";
 
 //API Values
 
@@ -37,7 +39,9 @@
         
         console.log("myCityWeather is " + myCityWeather);
 
-        var myLocWeather = getLocWeather(myCityWeather.coord.lat, myCityWeather.coord.lon);
+        var myLocWeather = getLocWeather(myLat, myLon);
+
+        console.log(myLocWeather);
 
     };
 
@@ -60,20 +64,23 @@
             
             console.log(data);
 
-            var setMe = JSON.parse(data);
+            console.log(data.coord);
 
-            setReturnMe(setMe);
+            console.log(data.coord.lat);
+
+            myLat = data.coord.lat;
+
+            console.log(data.coord.lon);
+
+            myLon = data.coord.lon;
+
+            var tempData = getLocWeather(myLat, myLon);
+
+            console.log(tempData);
+
+            buildWeather(data);
 
             });        
-
-        function setReturnMe(newVal) {
-
-            console.log("newVal is " + newVal);
-            returnMe = newVal;
-
-        };
-
-        return returnMe;
 
         });
     };
@@ -91,12 +98,26 @@
             
             console.log(data);
 
-            return data;
+            buildForecast(data);
 
             });
         });
 
 
+    }
+
+    function buildWeather(myWeather){
+
+        console.log("buildWeather is running");
+        console.log(myWeather);
+
+    }
+
+    function buildForecast(myForecast) {
+
+        console.log("buildForecast is running");
+        console.log(myForecast);
+        
     }
 
     var myWeather = getMyWeather("Boston");
