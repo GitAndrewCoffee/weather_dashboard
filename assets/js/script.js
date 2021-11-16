@@ -160,6 +160,12 @@
 
     var myWeather = getMyWeather("Boston");
     
+    $("#startSearch").on("click", function(){
+
+        getMyWeather($("#seachCity").val());
+
+    })
+    
 
 //
 // Listeners
