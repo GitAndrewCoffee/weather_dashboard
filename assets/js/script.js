@@ -102,6 +102,12 @@
         $('#windLable').text(myWeather.wind.speed);
         $('#humidityLable').text(myWeather.main.humidity);
 
+        var iconSRC = "http://openweathermap.org/img/w/" + myWeather.weather[0].icon + ".png";
+
+        console.log(iconSRC);
+        
+        $("#iconMain").attr("src", iconSRC);
+
     }
 
     function buildForecast(myForecast) {
@@ -126,35 +132,30 @@
 
         for (let i = 1; i < 6; i++) {
             
-             console.log("day " + i + " is " + myForecast.daily[i].temp.day);
-             console.log("day " + i + " is " + myForecast.daily[i].wind_speed);
-             console.log("day " + i + " is " + myForecast.daily[i].humidity);
-             console.log("day " + i + " is " + myForecast.daily[i].weather[0]);
-             console.log("date " + i + " is " + fiveDayDate[i-1]);
+            console.log("day " + i + " is " + myForecast.daily[i].temp.day);
+            console.log("day " + i + " is " + myForecast.daily[i].wind_speed);
+            console.log("day " + i + " is " + myForecast.daily[i].humidity);
+            console.log("day " + i + " is " + myForecast.daily[i].weather[0]);
+            console.log("date " + i + " is " + fiveDayDate[i-1]);
 
-            //build cards
-            //add cards to the forecast section
-
-            //forecastIcon = myForecast.daily[i].weather[0];
+            cardIcon = myForecast.daily[i].weather[0].icon;
+            console.log("cardIcon.main is " + cardIcon);
+            cardTemp = myForecast.daily[i].temp.day;
+            cardWind = myForecast.daily[i].wind_speed;
+            cardHumidity = myForecast.daily[i].humidity;
               
-            console.log(buildCard(fiveDayDate[i-1], cardIcon, cardTemp, cardTemp, cardWind, cardHumidity));
+            var iconSRC = "http://openweathermap.org/img/w/" + cardIcon + ".png";
+
+            console.log(iconSRC);
+            
+            $("#iconD"+i).attr("src", iconSRC);
+            $("#tempD"+i).text(cardTemp);
+            $("#windD"+i).text(cardWind);
+            $("#humidityD"+i).text(cardHumidity);
 
             //  $("#fiveDay").add(buildCard(fiveDayDate[i-1], cardIcon, cardTemp, cardTemp, cardWind, cardHumidity));
             
         };           
-    };
-
-    function buildCard(myDate,myIcon,myTemp,myWind,myHumidity) {
-
-        console.log("buildCard is running");
-        console.log(myDate);
-        console.log(myIcon);
-        console.log(myTemp);
-        console.log(myWind);
-        console.log(myHumidity);
-
-        return "help me, I'm broken inside";
-
     };
 
     var myWeather = getMyWeather("Boston");

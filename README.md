@@ -34,7 +34,7 @@ THEN I am again presented with current and future conditions for that city
 * JavaScript
 * Bootstrap
 * Jquery
-* links as provided in the module 5 starter code
+* OpenWeather API
 
 
 ## Website
