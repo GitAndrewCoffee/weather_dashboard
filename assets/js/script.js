@@ -152,21 +152,78 @@
             $("#tempD"+i).text(cardTemp);
             $("#windD"+i).text(cardWind);
             $("#humidityD"+i).text(cardHumidity);
-
-            //  $("#fiveDay").add(buildCard(fiveDayDate[i-1], cardIcon, cardTemp, cardTemp, cardWind, cardHumidity));
+            
             
         };           
     };
 
-    var myWeather = getMyWeather("Boston");
     
-    $("#startSearch").on("click", function(){
+    function addHistory(newCity) {
 
-        getMyWeather($("#seachCity").val());
+        console.log("addHistory is running");
+        console.log("newCity is" + newCity);
 
-    })
+        $("#historyList").append(`<button class="row historyBtn">` + newCity + `</button>`);
+
+        cityHistory.push(newCity);
+
+        localStorage.setItem("cityHistory", cityHistory);
+
+        console.log("city History is " + cityHistory);
+
+    }
+
+    function loadPage() {
+
+        console.log("loadPage is running");
+
+        var loadStorage = localStorage.getItem("cityHistory");
+
+        if (loadStorage) {
+        
+            var strungStorage = loadStorage.toString();
+            var arrayStorage = strungStorage.split(',');
     
+            console.log("storage variables below:");
+            console.log(loadStorage);
+            console.log(strungStorage);
+            console.log(arrayStorage);
+            console.log(cityHistory);
+
+            cityHistory = cityHistory.concat(arrayStorage);
+
+            console.log(cityHistory);
+
+            cityHistory.forEach(element => {
+                
+                $("#historyList").append(`<button class="row historyBtn">` + element + `</button>`);
+
+            });
+        }        
+
+    }
+
+    loadPage();
 
 //
 // Listeners
 //
+
+$("#startSearch").on("click", function(){
+
+    var searchCity = $("#seachCity").val();
+
+    console.log("searchCity is " + searchCity);
+    
+    getMyWeather(searchCity);
+    
+    addHistory(searchCity);
+
+})
+
+$(document.body).on('click', '.historyBtn' ,function() {
+
+    console.log($(this).text());
+    getMyWeather($(this).text());
+
+});

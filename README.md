@@ -1,4 +1,4 @@
-# Time Quiz
+# Weather Dashboard
 
 ## Purpose
 Module 6, Challenge 6 for University of Minnesota Coding Booking, Fall 2021 
